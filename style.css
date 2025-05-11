@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.todo-input {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.todo-list {
+    list-style: none;
+}
+
+.todo-item {
+    @apply flex items-center p-4 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow;
+}
+
+.todo-item.completed {
+    @apply bg-gray-50;
+}
+
+.todo-item.completed span {
+    @apply line-through text-gray-500;
+}
+
+.todo-item input[type="checkbox"] {
+    @apply w-5 h-5 mr-3 text-blue-500 border-gray-300 rounded focus:ring-blue-500;
+}
+
+.todo-item span {
+    @apply flex-grow text-gray-700;
+}
+
+.delete-btn {
+    @apply px-3 py-1 text-sm text-white bg-red-500 rounded hover:bg-red-600 transition-colors;
+}
+
+/* 애니메이션 효과 */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.todo-item {
+    animation: slideIn 0.3s ease-out;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 640px) {
+    .container {
+        @apply px-4;
+    }
+    
+    .todo-item {
+        @apply flex-col items-start gap-2;
+    }
+    
+    .delete-btn {
+        @apply w-full;
+    }
+}
